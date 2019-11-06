@@ -1,0 +1,8 @@
+{
+  "JWT_SECRET": "secret",
+  "NODE_ENV": "development",
+  "port": 3000,
+  "logLevel": "debug",
+  "version": "v1",
+  "MONGODB_URI": "mongodb://localhost:27017/backend-api"
+}
