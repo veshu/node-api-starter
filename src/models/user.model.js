@@ -1,42 +1,20 @@
 const mongoose = require('mongoose');
 
-/**
-* User Roles
-*/
-const roles = ['user', 'admin'];
 
 /**
  * User Schema
  * @private
  */
 const userSchema = new mongoose.Schema({
-  email: {
+  handle: {
     type: String,
-    match: /^\S+@\S+\.\S+$/,
     required: true,
     unique: true,
     trim: true,
     lowercase: true,
   },
-  password: {
-    type: String,
-    required: true,
-    minlength: 6,
-    maxlength: 128,
-  },
-  name: {
-    type: String,
-    maxlength: 128,
-    index: true,
-    trim: true,
-  },
-  role: {
-    type: String,
-    enum: roles,
-    default: 'user',
-  },
 }, {
-  timestamps: true,
+  timestamps: false,
 });
 
 /**
@@ -61,7 +39,7 @@ userSchema.pre('save', async function save(next) {
 userSchema.method({
   transform() {
     const transformed = {};
-    const fields = ['id', 'name', 'email', 'picture', 'role', 'createdAt'];
+    const fields = ['id', 'handle'];
 
     fields.forEach((field) => {
       transformed[field] = this[field];

@@ -54,10 +54,6 @@ class APIError extends ExtendableError {
 
 module.exports = {
   APIError,
-  UnauthorizedError: new APIError({
-    message: 'Unauthorized',
-    status: httpStatus.UNAUTHORIZED,
-  }),
   NotFoundError: new APIError({
     message: 'NotFound',
     status: httpStatus.NOT_FOUND,
@@ -66,15 +62,11 @@ module.exports = {
     message: 'NotFound',
     status: httpStatus.BAD_REQUEST,
   }),
-  ForbiddenError: new APIError({
-    message: 'Forbidden',
-    status: httpStatus.FORBIDDEN,
-  }),
   ValidationError: (errors, message, err) => new APIError({
     message: message || 'Validation Error',
     errors,
     status: httpStatus.CONFLICT,
     isPublic: true,
-    stack: err.stack,
+    stack: err ? err.stack : undefined,
   }),
 };
