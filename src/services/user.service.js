@@ -12,8 +12,8 @@ const errors = require('../common/APIError');
  */
 exports.create = async (data) => {
   if (await User.count({
-      handle: data.handle,
-    }) > 0) {
+    handle: data.handle,
+  }) > 0) {
     throw errors.ValidationError([{
       field: 'handle',
       location: 'body',
