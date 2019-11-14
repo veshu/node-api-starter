@@ -1,6 +1,6 @@
 {
   "JWT_SECRET": "secret",
-  "NODE_ENV": "development",
+  "env": "development",
   "port": 8080,
   "logLevel": "debug",
   "version": "v1",

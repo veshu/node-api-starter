@@ -22,3 +22,13 @@ exports.search = async (req, res) => {
   const items = await userService.search(req.query);
   res.json(items);
 };
+
+
+exports.remove = async (req, res, next) => {
+  try {
+    await userService.remove(req.params.id);
+    res.end();
+  } catch (e) {
+    next(e);
+  }
+};
